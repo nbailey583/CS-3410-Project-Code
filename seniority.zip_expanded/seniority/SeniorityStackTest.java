@@ -9,9 +9,15 @@ public class SeniorityStackTest
 	{
 		stackCreationFromFileTest();//Passed
 		fireAlltest();//Passed
-		//fireDept_Support();//Passed
+		fireDept_Support();//Passed
+		githubEditTest();
 	}
 
+	private static void githubEditTest();
+	{
+		break;
+	}
+	
 	private static void fireDept_Support() 
 	{
 		try
