@@ -177,7 +177,6 @@ public class SeniorityStack
 		Employee layoff = new Employee("Null Null", date, "Null");
 		System.out.println(layoff.getDateHired());
 		Stack<Employee> fired = new Stack<Employee>();
-		Stack<Employee> temp = new Stack<Employee>();
 		int i = 0;
 		int j = emp.size();
 		while(i<j)
@@ -185,23 +184,20 @@ public class SeniorityStack
 			if(layoff.compareTo(emp.peek()) == -1)
 			{
 				fired.push(emp.pop());
+				i++;
 			}
 			else 
 			{
-				temp.push(emp.pop());
+				break;
 			}
-			i++;
-		}
-		while(!temp.isEmpty()) //O(n)
-		{
-			emp.add(temp.pop());
+			
 		}
 		if(!fired.isEmpty())
 		{
 			System.out.println("Employees fired:");
 			for(Employee f: fired) //O(n)
 			{
-				System.out.println(f.getName());
+				System.out.println(f.getName() + " " + f.getDateHired());
 			}
 		}
 	}
@@ -213,7 +209,7 @@ public class SeniorityStack
 		while(!emp.isEmpty()) //O(n)
 		{
 			Employee e = emp.pop();
-			System.out.println(e.getName());
+			System.out.println(e.getName() + " " + e.getDateHired());
 		}
 	}
 	
@@ -221,27 +217,39 @@ public class SeniorityStack
 	{
 		System.out.println("List of Employees in Technical:");
 		if(empTech.isEmpty()) System.out.println("No employees");
-		for(Employee e : empTech)
+		else
 		{
-			System.out.println(e.getName());
+			for(Employee e : empTech)
+			{
+				System.out.println(e.getName() + " " + e.getDateHired());
+			}
 		}
 		System.out.println("\nList of Employees in Support:");
 		if(empSupp.isEmpty()) System.out.println("No employees");
-		for(Employee e: empSupp)
+		else 
 		{
-			System.out.println(e.getName());
+			for(Employee e: empSupp)
+			{
+				System.out.println(e.getName() + " " + e.getDateHired());
+			}
 		}
 		System.out.println("\nList of Employees in Marketing:");
 		if(empMark.isEmpty()) System.out.println("No employees");
-		for(Employee e : empMark) 
+		else
 		{
-			System.out.println(e.getName());
+			for(Employee e : empMark) 
+			{
+				System.out.println(e.getName() + " " + e.getDateHired());
+			}
 		}
 		System.out.println("\nList of Employee in Financial:");
 		if(empFin.isEmpty()) System.out.println("No employess");
-		for(Employee e : empFin)
+		else
 		{
-			System.out.println(e.getName());
+			for(Employee e : empFin)
+			{
+				System.out.println(e.getName() + " " + e.getDateHired());
+			}
 		}
 	}
 	
@@ -249,7 +257,6 @@ public class SeniorityStack
 	{
 		Employee layoff = new Employee("Null Null", date, dept);
 		Stack<Employee> fired = new Stack<Employee>();
-		Stack<Employee> temp = new Stack<Employee>();
 		switch (layoff.getDepartment())
 		{
 			case "TECHNICAL":
@@ -261,12 +268,12 @@ public class SeniorityStack
 					if(layoff.compareTo(empTech.peek()) == -1)
 					{
 						fired.push(empTech.pop());
+						i++;
 					}
 					else
 					{
-						temp.push(empTech.pop());
+						break;
 					}
-					i++;
 				}
 				break;
 			}
@@ -280,12 +287,13 @@ public class SeniorityStack
 					if(layoff.compareTo(empFin.peek()) == -1)
 					{
 						fired.push(empFin.pop());
+						i++;
 					}
 					else
 					{
-						temp.push(empFin.pop());
+						break;
 					}
-					i++;
+					
 				}
 				break;
 			}
@@ -299,12 +307,12 @@ public class SeniorityStack
 					if(layoff.compareTo(empMark.peek()) == -1)
 					{
 						fired.push(empMark.pop());
+						i++;
 					}
 					else
 					{
-						temp.push(empMark.pop());
+						break;
 					}
-					i++;
 				}
 				break;
 			}
@@ -318,25 +326,20 @@ public class SeniorityStack
 					if(layoff.compareTo(empSupp.peek()) == -1)
 					{
 						fired.push(empSupp.pop());
+						i++;
 					}
 					else
 					{
-						temp.push(empSupp.pop());
+						break;
 					}
-					i++;
 				}
 				break;
 			}
 		}
-		
-		while(!temp.isEmpty())
-		{
-			addDeptEmp(temp.pop());
-		}
 		System.out.println("Employees fired from " + dept + ":");
 		for(Employee f: fired)
 		{
-			System.out.println(f.getName());
+			System.out.println(f.getName() + " " + f.getDateHired());
 		}
 	}
 }
